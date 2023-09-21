@@ -17,7 +17,18 @@ const debug = false
  * - DEBUG level will be possible to activate with an env var or telemetry config property
  */
 function isLevelEnabled (level) {
-  return level && (level !== 'DEBUG' || debug)
+  return isValidLevel(level) && (level !== 'DEBUG' || debug)
+}
+
+function isValidLevel (level) {
+  switch (level) {
+    case 'ERROR':
+    case 'WARN':
+    case 'DEBUG':
+      return true
+    default:
+      return false
+  }
 }
 
 function onLog (log) {

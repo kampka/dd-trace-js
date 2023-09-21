@@ -128,6 +128,12 @@ describe('telemetry logs', () => {
 
       expect(logCollectorAdd).to.not.be.called
     })
+
+    it('should not be called with incorrect level', () => {
+      telemetryLog.publish({ message: 'message', level: 'INFO' })
+
+      expect(logCollectorAdd).to.not.be.called
+    })
   })
 
   describe('send', () => {
