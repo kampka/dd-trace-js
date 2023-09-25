@@ -8,23 +8,19 @@ const telemetryLog = dc.channel('datadog:telemetry:log')
 
 let enabled = false
 
-// TODO: set value when the env var is defined
-const debug = false
-
 /**
  * Telemetry logs api defines only ERROR, WARN and DEBUG levels:
  * - WARN level is enabled by default
  * - DEBUG level will be possible to activate with an env var or telemetry config property
  */
 function isLevelEnabled (level) {
-  return isValidLevel(level) && (level !== 'DEBUG' || debug)
+  return isValidLevel(level)
 }
 
 function isValidLevel (level) {
   switch (level) {
     case 'ERROR':
     case 'WARN':
-    case 'DEBUG':
       return true
     default:
       return false
