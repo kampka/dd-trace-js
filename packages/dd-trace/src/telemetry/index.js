@@ -7,7 +7,7 @@ const dependencies = require('./dependencies')
 const { sendData } = require('./send-data')
 
 const { manager: metricsManager } = require('./metrics')
-const logs = require('./log')
+const logs = require('./logs')
 
 const telemetryStartChannel = dc.channel('datadog:telemetry:start')
 const telemetryStopChannel = dc.channel('datadog:telemetry:stop')

@@ -100,7 +100,7 @@ describe('IAST log', () => {
     })
 
     it('should include original message and dd frames', () => {
-      const ddFrame = `at T (${ddBasePath}packages/dd-trace/test/appsec/iast/telemetry/log_collector.spec.js:29:21)`
+      const ddFrame = `at T (${ddBasePath}packages/dd-trace/test/telemetry/logs/log_collector.spec.js:29:21)`
       const stack = new Error('Error 1')
         .stack.replace(`Error 1${EOL}`, `Error 1${EOL}${ddFrame}${EOL}`)
 
@@ -126,7 +126,7 @@ describe('IAST log', () => {
 
     it('should not include original message if first frame is not a dd frame', () => {
       const thirdPartyFrame = `at callFn (/this/is/not/a/dd/frame/runnable.js:366:21)
-        at T (${ddBasePath}packages/dd-trace/test/appsec/iast/telemetry/log_collector.spec.js:29:21)`
+        at T (${ddBasePath}packages/dd-trace/test/telemetry/logs/log_collector.spec.js:29:21)`
       const stack = new Error('Error 1')
         .stack.replace(`Error 1${EOL}`, `Error 1${EOL}${thirdPartyFrame}${EOL}`)
 

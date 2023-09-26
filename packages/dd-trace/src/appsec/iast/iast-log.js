@@ -95,7 +95,7 @@ const iastLog = {
 
   /**
    * forward 'INFO' log level to 'DEBUG' telemetry log level
-   * see also {@link ../../telemetry/log#isLevelEnabled } method
+   * see also {@link ../../telemetry/logs#isLevelEnabled } method
    */
   infoAndPublish (data) {
     this.info(data)

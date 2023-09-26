@@ -34,7 +34,7 @@ describe('telemetry logs', () => {
 
   describe('start', () => {
     it('should be enabled by default and subscribe', () => {
-      const logs = proxyquire('../../../src/telemetry/log', {
+      const logs = proxyquire('../../../src/telemetry/logs', {
         '../../../../diagnostics_channel': dc
       })
 
@@ -44,7 +44,7 @@ describe('telemetry logs', () => {
     })
 
     it('should be subscribe only once', () => {
-      const logs = proxyquire('../../../src/telemetry/log', {
+      const logs = proxyquire('../../../src/telemetry/logs', {
         '../../../../diagnostics_channel': dc
       })
 
@@ -56,7 +56,7 @@ describe('telemetry logs', () => {
     })
 
     it('should be disabled and not subscribe if DD_TELEMETRY_LOG_COLLECTION_ENABLED = false', () => {
-      const logs = proxyquire('../../../src/telemetry/log', {
+      const logs = proxyquire('../../../src/telemetry/logs', {
         '../../../../diagnostics_channel': dc
       })
 
@@ -69,7 +69,7 @@ describe('telemetry logs', () => {
 
   describe('stop', () => {
     it('should unsubscribe configured listeners', () => {
-      const logs = proxyquire('../../../src/telemetry/log', {
+      const logs = proxyquire('../../../src/telemetry/logs', {
         '../../../../diagnostics_channel': dc
       })
       logs.start(defaultConfig)
@@ -89,7 +89,7 @@ describe('telemetry logs', () => {
       telemetryLog = dc.channel('datadog:telemetry:log')
 
       logCollectorAdd = sinon.stub()
-      const logs = proxyquire('../../../src/telemetry/log', {
+      const logs = proxyquire('../../../src/telemetry/logs', {
         './log-collector': {
           add: logCollectorAdd
         }
@@ -150,7 +150,7 @@ describe('telemetry logs', () => {
       logCollectorDrain = sinon.stub().returns(collectedLogs)
       sendData = sinon.stub()
 
-      logs = proxyquire('../../../src/telemetry/log', {
+      logs = proxyquire('../../../src/telemetry/logs', {
         './log-collector': {
           drain: logCollectorDrain
         },
